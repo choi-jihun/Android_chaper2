@@ -16,3 +16,4 @@ local.properties
 
 /chapter3-6/google-services.json
 /chapter3-6/src/main/res/values/api_key.xml
+/chapter3-7/src/main/java/com/example/chapter3_7/ServiceKey.kt
