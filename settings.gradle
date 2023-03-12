@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven{ url "https://naver.jfrog.io/artifactory/maven/"}
     }
 }
 rootProject.name = "chapter3-1"
@@ -20,3 +21,4 @@ include ':chapter3-4'
 include ':chapter3-5'
 include ':chapter3-7'
 include ':chapter3-6'
+include ':chapter3-8'
