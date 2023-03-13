@@ -1,5 +1,6 @@
 package com.example.chapter3_7
 
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,6 +40,7 @@ object WeatherRepository {
                     response.body()?.response?.body?.items?.forecastEntities.orEmpty()
 
                 for (forecast in forecastList) {
+
                     if (forecastDateTimeMap["${forecast.forecastDate}/${forecast.forecastTime}"] == null) {
                         forecastDateTimeMap["${forecast.forecastDate}/${forecast.forecastTime}"] =
                             Forecast(
@@ -79,6 +81,7 @@ object WeatherRepository {
                         successCallback(list)
                     }
                 }
+                Log.e("Forecast",forecastDateTimeMap.toString())
             }
 
             override fun onFailure(call: Call<WeatherEntity>, t: Throwable) {

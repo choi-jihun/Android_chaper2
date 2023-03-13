@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface WeatherService {
 
-    @GET("1360000/VilageFcstInfoService_2.0/getVilageFcst?pageNo=1&numOfRows=400&dataType=JSON&base_time=1400")
+    @GET("1360000/VilageFcstInfoService_2.0/getVilageFcst?pageNo=1&numOfRows=400&dataType=JSON")
     fun getVillageForecast(
         @Query("serviceKey")
         serviceKey : String,

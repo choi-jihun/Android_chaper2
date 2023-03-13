@@ -97,14 +97,11 @@ class MainActivity : AppCompatActivity() {
                             val itemView = ItemForecastBinding.inflate(layoutInflater)
                             itemView.timeTextView.text = forecast.forecastTime
                             itemView.weatherTextView.text = forecast.weather
-                            itemView.temperatureTextView.text =
-                                getString(R.string.temperature_text, forecast.temperature)
+                            itemView.temperatureTextView.text = getString(R.string.temperature_text, forecast.temperature)
 
                             addView(itemView.root)
                         }
                     }
-
-                    Log.e("Forecast", list.toString())
                 },
                 failureCallback = {
                     it.printStackTrace()
