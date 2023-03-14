@@ -16,7 +16,7 @@ data class BaseDateTime(
                     "2300"
                 }
                 in LocalTime.of(2, 30)..LocalTime.of(5, 30) -> {
-                    "0300"
+                    "0200"
                 }
                 in LocalTime.of(5, 30)..LocalTime.of(8, 30) -> {
                     "0500"
