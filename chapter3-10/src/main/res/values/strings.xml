@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">chapter3-10</string>
+    <string name="signUp">회원가입</string>
+    <string name="signIn">로그인</string>
+    <string name="signOut">로그아웃</string>
+    <string name="home">홈</string>
+    <string name="myPage">myPage</string>
+    <string name="upload">올리기</string>
+    <string name="photo_description">사진 설명</string>
+</resources>
