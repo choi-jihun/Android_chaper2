@@ -7,4 +7,5 @@
     <string name="myPage">myPage</string>
     <string name="upload">올리기</string>
     <string name="photo_description">사진 설명</string>
+    <string name="search">게시글 검색</string>
 </resources>
