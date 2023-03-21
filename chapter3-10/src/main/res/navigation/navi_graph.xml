@@ -59,5 +59,9 @@
         android:id="@+id/bookMarkArticleFragment"
         android:name="com.example.chapter3_10.ui.bookmark.BookMarkArticleFragment"
         android:label="BookMarkArticleFragment"
-        tools:layout="@layout/fragment_bookmark"/>
+        tools:layout="@layout/fragment_bookmark">
+        <action
+            android:id="@+id/action_bookMarkArticleFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
 </navigation>

@@ -3,6 +3,8 @@ package com.example.chapter3_10.ui.bookmark
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.chapter3_10.R
 import com.example.chapter3_10.databinding.FragmentBookmarkBinding
@@ -20,8 +22,13 @@ class BookMarkArticleFragment : Fragment(R.layout.fragment_bookmark) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentBookmarkBinding.bind(view)
-        bookmarkAdapter = BookmarkArticleAdapter {
 
+        binding.toolbar.setupWithNavController(findNavController())
+
+        bookmarkAdapter = BookmarkArticleAdapter {
+            findNavController().navigate(
+                BookMarkArticleFragmentDirections.actionBookMarkArticleFragmentToArticleFragment(it.articleId.orEmpty())
+            )
         }
 
         binding.articleRecyclerView.apply {

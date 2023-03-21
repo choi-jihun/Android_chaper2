@@ -9,6 +9,8 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
 import com.example.chapter3_10.R
 import com.example.chapter3_10.data.ArticleModel
@@ -22,33 +24,47 @@ import java.util.UUID
 class WriteArticleFragment : Fragment(R.layout.fragment_write) {
 
     private lateinit var binding: FragmentWriteBinding
+    private lateinit var viewModel: WriteArticleViewModel
 
-    private var selectedUri: Uri? = null
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             // Callback is invoked after the user selects a media item or closes the
             // photo picker.
             if (uri != null) {
-                selectedUri = uri
-                binding.photoImageView.setImageURI(uri)
-                binding.plusButton.isVisible = false
-                binding.deleteButton.isVisible = true
+                viewModel.updateSelectedUri(uri)
             } else {
-                Toast.makeText(context, "이미지 선택을 취소하였습니다.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "이미지 선택을 취소하였습니다.", Toast.LENGTH_SHORT).show()
                 Log.d("PhotoPicker", "No media selected")
             }
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentWriteBinding.bind(view)
-        startPicker()
+
+        setUpViewModel()
+        if (viewModel.selectedUri.value == null) {
+            startPicker()
+        }
         setUpPhotoImageView()
         setUpDeleteButton()
         setUpSubmitButton(view)
         setUpBackButton()
 
+    }
+
+    private fun setUpViewModel() {
+        viewModel = ViewModelProvider(requireActivity()).get<WriteArticleViewModel>()
+        viewModel.selectedUri.observe(viewLifecycleOwner) {
+            binding.photoImageView.setImageURI(it)
+            if (it != null) {
+                binding.plusButton.isVisible = false
+                binding.deleteButton.isVisible = true
+            } else {
+                binding.deleteButton.isVisible = false
+                binding.plusButton.isVisible = true
+            }
+        }
     }
 
     private fun setUpBackButton() {
@@ -60,8 +76,8 @@ class WriteArticleFragment : Fragment(R.layout.fragment_write) {
     private fun setUpSubmitButton(view: View) {
         binding.submitButton.setOnClickListener {
             showProgress()
-            if (selectedUri != null) {
-                val photoUri = selectedUri ?: return@setOnClickListener
+            if (viewModel.selectedUri.value != null) {
+                val photoUri = viewModel.selectedUri.value ?: return@setOnClickListener
                 upLoadImage(photoUri,
                     successHandler = {
                         //Firestore 데이터 업로드
@@ -83,7 +99,7 @@ class WriteArticleFragment : Fragment(R.layout.fragment_write) {
 
     private fun setUpPhotoImageView() {
         binding.photoImageView.setOnClickListener {
-            if (selectedUri == null) {
+            if (viewModel.selectedUri.value == null) {
                 startPicker()
             }
         }
@@ -91,10 +107,7 @@ class WriteArticleFragment : Fragment(R.layout.fragment_write) {
 
     private fun setUpDeleteButton() {
         binding.deleteButton.setOnClickListener {
-            binding.photoImageView.setImageURI(null)
-            selectedUri = null
-            binding.deleteButton.isVisible = false
-            binding.plusButton.isVisible = true
+            viewModel.updateSelectedUri(null)
         }
     }
 
@@ -139,8 +152,8 @@ class WriteArticleFragment : Fragment(R.layout.fragment_write) {
         Firebase.firestore.collection("articles").document(articleId).set(articleModel)
             .addOnSuccessListener {
                 findNavController().navigate(WriteArticleFragmentDirections.actionWriteArticleFragmentToHomeFragment())
-                view?.let {view->
-                    Snackbar.make(view,"업로드 되었습니다.",Snackbar.LENGTH_SHORT).show()
+                view?.let { view ->
+                    Snackbar.make(view, "업로드 되었습니다.", Snackbar.LENGTH_SHORT).show()
                 }
                 hideProgress()
             }.addOnFailureListener {
