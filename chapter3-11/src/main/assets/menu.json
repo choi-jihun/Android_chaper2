@@ -1,0 +1,57 @@
+{
+  "coffee" : [
+    {
+      "name" : "바나나 맛 우유",
+      "image" : "https://picsum.photos/100/100"
+    },
+    {
+      "name" : "아메리카노",
+      "image" : "https://picsum.photos/100/100"
+    },
+    {
+      "name" : "카라멜 마끼아토",
+      "image" : "https://picsum.photos/100/100"
+    },
+    {
+      "name" : "카페라떼",
+      "image" : "https://picsum.photos/100/100"
+    },
+    {
+      "name" : "민트칩 프라프치노",
+      "image" : "https://picsum.photos/100/100"
+    },
+    {
+      "name" : "얼그레이",
+      "image" : "https://picsum.photos/100/100"
+    },
+    {
+      "name" : "아이스 티",
+      "image" : "https://picsum.photos/100/100"
+    },
+    {
+      "name" : "아 몰랑",
+      "image" : "https://picsum.photos/100/100"
+    }
+  ],
+  "food" : [
+    {
+      "name" : "티라미수",
+      "image" : "https://picsum.photos/100/100"
+    },{
+      "name" : "치즈케잌",
+      "image" : "https://picsum.photos/100/100"
+    },{
+      "name" : "복숭아",
+      "image" : "https://picsum.photos/100/100"
+    },{
+      "name" : "짬뽕",
+      "image" : "https://picsum.photos/100/100"
+    },{
+      "name" : "탕수육",
+      "image" : "https://picsum.photos/100/100"
+    },{
+      "name" : "감자탕",
+      "image" : "https://picsum.photos/100/100"
+    }
+  ]
+}
