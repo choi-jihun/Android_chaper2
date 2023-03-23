@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/coordinatorLayout">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F3F3F3"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <!--    com.google.android.material.appbar.AppBarLayout$Behavior 대신 @string/appbar_scrolling_view_behavior 가능   -->
@@ -20,15 +21,15 @@
 
             <include
                 android:id="@+id/recommendMenuList"
-                layout="@layout/layout_horizontal_menu_list"/>
+                layout="@layout/layout_horizontal_menu_list" />
 
             <include
                 android:id="@+id/bannerLayout"
-                layout="@layout/layout_banner_image"/>
+                layout="@layout/layout_banner_image" />
 
             <include
                 android:id="@+id/foodMenuList"
-                layout="@layout/layout_horizontal_menu_list"/>
+                layout="@layout/layout_horizontal_menu_list" />
 
         </LinearLayout>
 
@@ -153,12 +154,12 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delivery"
-        app:icon="@drawable/baseline_delivery_dining_24"
-        app:iconTint="@color/white"
-        android:textColor="@color/white"
-        android:backgroundTint="#009C3F"
         android:layout_gravity="end|bottom"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:backgroundTint="#009C3F"
+        android:text="@string/delivery"
+        android:textColor="@color/white"
+        app:icon="@drawable/baseline_delivery_dining_24"
+        app:iconTint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
