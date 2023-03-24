@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">동영상</string>
     <string name="sub_title_video_info">%s · 조회수 %s · %s</string>
+    <string name="header_sub_title_video_info">조회수 %s · %s</string>
     <string name="home">홈</string>
     <string name="storage">저장소</string>
+    <string name="pause_a11y">일시정지</string>
+    <string name="play_a11y">재생</string>
+    <string name="forward_a11y">빨리감기</string>
+    <string name="backward_a11y">뒤로감기</string>
 </resources>
